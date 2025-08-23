@@ -3,12 +3,6 @@ import styles from './root.module.css'
 export default function Page() {
   return (
     <>
-      <header className={styles.header}>
-        <div className={styles.headerContainer}>
-          <div>AfterSunday</div>
-          <div>로그인</div>
-        </div>
-      </header>
       <main className={styles.main}>
         <div>
           <h2>hello, world</h2>
