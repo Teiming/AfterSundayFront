@@ -1,5 +1,5 @@
-import { Metadata, Viewport } from 'next'
 import { ReactNode } from 'react'
+import { Metadata, Viewport } from 'next'
 import { SpeedInsights } from '@vercel/speed-insights/next'
 import Header from './header'
 import Footer from './footer'
