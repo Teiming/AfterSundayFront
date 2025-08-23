@@ -1,3 +1,4 @@
+import Link from 'next/link'
 import styles from './root.module.css'
 
 export default function Header() {
@@ -6,7 +7,7 @@ export default function Header() {
       <div className={styles.headerContainer}>
         <div>AfterSunday</div>
         <div>
-          <a href='./login'>로그인</a>
+          <Link href='./login'>로그인</Link>
         </div>
       </div>
     </header>
