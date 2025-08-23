@@ -1,3 +1,5 @@
+import styles from './root.module.css'
+
 export default function Page() {
   return (
     <>
