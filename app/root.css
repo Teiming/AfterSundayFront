@@ -8,7 +8,9 @@
   box-sizing: border-box;
   font-family: 'NanumSquareRound', -apple-system, sans-serif;
 }
-
+a {
+  text-decoration: none;
+}
 @font-face {
   font-family: 'NanumSquareRound';
   src: url(https://hangeul.pstatic.net/hangeul_static/webfont/NanumSquareRound/NanumSquareRoundR.eot);
