@@ -35,13 +35,13 @@
   position: absolute;
   bottom: 0;
   width: 100%;
-  padding-bottom: env(safe-area-inset-bottom);
   > div {
     background-color: lightskyblue;
     max-width: var(--max-width);
     display: flex;
     margin: auto;
     padding: 0.5rem;
+    padding-bottom: env(safe-area-inset-bottom);
     justify-content: space-between;
     div {
       width: 4rem;
