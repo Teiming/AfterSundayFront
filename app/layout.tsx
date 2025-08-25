@@ -7,6 +7,8 @@ import './root.css'
 
 export const metadata: Metadata = {
   title: 'After Sunday Project',
+  manifest: '/manifest.json',
+  icons: { apple: '/app-icon192.png' },
   other: {
     charSet: 'utf-8',
   },
