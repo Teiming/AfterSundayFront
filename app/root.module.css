@@ -32,7 +32,7 @@
 }
 
 .controller {
-  position: absolute;
+  position: fixed;
   bottom: 0;
   width: 100%;
   > div {
@@ -41,7 +41,7 @@
     display: flex;
     margin: auto;
     padding: 0.5rem;
-    padding-bottom: calc(0.5rem +env(safe-area-inset-bottom));
+    padding-bottom: calc(0.5rem + env(safe-area-inset-bottom));
     justify-content: space-between;
     div {
       width: 4rem;
