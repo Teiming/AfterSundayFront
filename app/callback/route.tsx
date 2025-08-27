@@ -10,7 +10,7 @@ export async function GET(req: NextRequest) {
       grant_type: 'authorization_code',
       client_id: process.env.KAKAO_CLIENT_ID!,
       client_secret: process.env.KAKAO_CLIENT_SECRET!,
-      redirect_uri: req.nextUrl.origin + '/redirect',
+      redirect_uri: req.nextUrl.origin + '/callback',
       code: code!,
     }),
   })

@@ -29,7 +29,7 @@ export default function Login() {
       <h4>로그인 후 다양한 활동에 참가해보세요.</h4>
       <Link
         style={{ display: 'flex', justifyContent: 'center' }}
-        href={`https://kauth.kakao.com/oauth/authorize?response_type=code&client_id=${process.env.KAKAO_CLIENT_ID}&redirect_uri=${process.env.KAKAO_REDIR}/redirect`}
+        href={`https://kauth.kakao.com/oauth/authorize?response_type=code&client_id=${process.env.KAKAO_CLIENT_ID}&redirect_uri=${process.env.KAKAO_REDIR}/callback`}
       >
         <Image
           src='/kakao_login_medium_wide.svg'
