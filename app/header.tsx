@@ -7,7 +7,11 @@ export default function Header() {
     <header className={styles.header}>
       <div className={styles.headerContainer}>
         <div className={styles.headerTitle}>
-          <Link href='/'>AfterSunday</Link>
+          <Link href='/'>
+            <h2 style={{ fontFamily: 'YeogiOttaeJalnanGothic' }}>
+              애프터선데이
+            </h2>
+          </Link>
         </div>
         <LoginBtn />
       </div>
