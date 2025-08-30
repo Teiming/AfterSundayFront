@@ -29,7 +29,7 @@ export default function Login() {
       <h4>로그인 후 다양한 활동에 참가해보세요.</h4>
       <Link
         style={{ display: 'flex', justifyContent: 'center' }}
-        href={'/kakao_login'}
+        href={'/login/kakao'}
       >
         <Image
           src='/kakao_login_medium_wide.svg'
