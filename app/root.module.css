@@ -1,7 +1,6 @@
 .header {
   background-color: deepskyblue;
   color: darkblue;
-  height: 3rem;
   padding: 0.5rem;
 }
 .headerContainer {
@@ -10,24 +9,21 @@
   display: flex;
   justify-content: space-between;
   align-content: center;
-  div {
-    font-size: 1.5rem;
-    align-content: center;
-  }
   .headerTitle {
-    padding-top: 0.2rem;
+    padding-top: 0.3rem;
     font-weight: bold;
   }
-  .headerTitle + div:last-child {
-    font-size: 1rem;
+  .headerAction {
+    display: flex;
+    align-items: center;
   }
 }
 
 .main {
-  padding: 0.5rem;
+  max-width: var(--max-width);
+  margin: auto;
   > div {
-    max-width: var(--max-width);
-    margin: auto;
+    padding: 0.5rem;
   }
 }
 

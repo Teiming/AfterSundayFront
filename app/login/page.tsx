@@ -36,7 +36,6 @@ export default function Login() {
           alt='카카오 로그인'
           width={300}
           height={45}
-          style={{ margin: '1rem', alignSelf: 'center' }}
         />
       </Link>
     </main>
