@@ -19,22 +19,17 @@ export async function GET(req: NextRequest) {
     }),
   })
   const tokenData = await tokenRes.json()
-  console.log('tokenData', tokenData)
 
   // get userdata from kakao resouce server
   const userRes = await fetch('https://kapi.kakao.com/v2/user/me', {
     headers: { Authorization: `Bearer ${tokenData.access_token}` },
   })
   const userData = await userRes.json()
-  console.log(userData)
 
   // generate jwt_token
-  const jwtToken = jwt.sign(
-    { id: userData.id, name: userData.kakao_account.name },
-    process.env.JWT_SECRET!,
-    { expiresIn: '1h' }
-  )
-  console.log(jwtToken)
+  const jwtToken = jwt.sign(userData, process.env.JWT_SECRET!, {
+    expiresIn: '1h',
+  })
 
   const res = NextResponse.redirect(new URL('/', req.url))
   res.cookies.set('jwtToken', jwtToken, {
