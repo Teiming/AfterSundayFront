@@ -15,14 +15,16 @@ export default async function Header() {
   const jwtToken = cookieStore.get('jwtToken')?.value
 
   let username
-  try {
-    const userdata = (await jwt.verify(
-      jwtToken!,
-      process.env.JWT_SECRET!
-    )) as KakaoUserData
-    username = <h4>{userdata.kakao_account.name}님</h4>
-  } catch (error) {
-    console.log(error)
+  if (jwtToken) {
+    try {
+      const userdata = (await jwt.verify(
+        jwtToken!,
+        process.env.JWT_SECRET!
+      )) as KakaoUserData
+      username = <h4>{userdata.kakao_account.name}님</h4>
+    } catch (error) {
+      console.log(error)
+    }
   }
 
   return (
