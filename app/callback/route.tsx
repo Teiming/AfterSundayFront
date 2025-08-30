@@ -34,7 +34,7 @@ export async function GET(req: NextRequest) {
   const res = NextResponse.redirect(new URL('/', req.url))
   res.cookies.set('jwtToken', jwtToken, {
     httpOnly: true,
-    secure: true,
+    secure: req.nextUrl.protocol == 'https:',
     path: '/',
   })
 
