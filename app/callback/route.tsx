@@ -15,6 +15,9 @@ export async function GET(req: NextRequest) {
   // get code from user
   const code = req.nextUrl.searchParams.get('code')
 
+  if (!code) {
+    return NextResponse.json({ error: '인증코드 없음' }, { status: 401 })
+  }
   // get token from kakao authorization server
   const tokenRes = await fetch('https://kauth.kakao.com/oauth/token', {
     method: 'POST',
@@ -28,7 +31,7 @@ export async function GET(req: NextRequest) {
       code: code!,
     }),
   })
-  const tokenData = await tokenRes.json()
+  const tokenData = (await tokenRes.json()) as KakaoToken
 
   // get userdata from kakao resouce server
   const userRes = await fetch('https://kapi.kakao.com/v2/user/me', {
@@ -44,7 +47,7 @@ export async function GET(req: NextRequest) {
   const res = NextResponse.redirect(new URL('/', req.url))
   res.cookies.set('jwtToken', jwtToken, {
     httpOnly: true,
-    secure: req.nextUrl.protocol == 'https:',
+    secure: req.nextUrl.protocol === 'https:',
     path: '/',
   })
 
