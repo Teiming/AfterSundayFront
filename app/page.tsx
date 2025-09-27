@@ -1,6 +1,6 @@
 import styles from './root.module.css'
 
-export function Headline({ title }: { title: string }) {
+function Headline({ title }: { title: string }) {
   return <h3 style={{ padding: '0.5rem' }}>{title}</h3>
 }
 
