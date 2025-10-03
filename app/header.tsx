@@ -32,7 +32,7 @@ export default async function Header() {
       <div className={styles.headerContainer}>
         <div className={styles.headerTitle}>
           <Link href='/'>
-            <h2 style={{ fontFamily: 'YeogiOttaeJalnanGothic' }}>
+            <h2 style={{ fontFamily: 'YeogiOttaeJalnanGothic, -apple-system' }}>
               애프터선데이
             </h2>
           </Link>
