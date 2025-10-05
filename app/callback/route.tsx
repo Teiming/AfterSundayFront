@@ -34,10 +34,10 @@ export async function GET(req: NextRequest) {
   const tokenData = (await tokenRes.json()) as KakaoToken
 
   // get userdata from kakao resouce server
-  const userRes = await fetch('https://kapi.kakao.com/v2/user/me', {
+  const preUserData = await fetch('https://kapi.kakao.com/v2/user/me', {
     headers: { Authorization: `Bearer ${tokenData.access_token}` },
   })
-  const userData = await userRes.json()
+  const userData = (await preUserData.json()) as KakaoUserData
 
   // generate jwt_token
   const jwtToken = jwt.sign(userData, process.env.JWT_SECRET!, {
