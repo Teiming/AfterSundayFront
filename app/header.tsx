@@ -1,7 +1,7 @@
+import jwt from 'jsonwebtoken'
 import { cookies } from 'next/headers'
 import Link from 'next/link'
 import LoginBtn from './LoginBtn'
-import jwt from 'jsonwebtoken'
 import styles from './root.module.css'
 
 export interface KakaoUserData {
@@ -18,7 +18,7 @@ export default async function Header() {
   if (jwtToken) {
     try {
       const userdata = (await jwt.verify(
-        jwtToken!,
+        jwtToken,
         process.env.JWT_SECRET!
       )) as KakaoUserData
       username = <h4>{userdata.kakao_account.name}님</h4>
