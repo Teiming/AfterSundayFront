@@ -16,7 +16,7 @@ export async function GET(req: NextRequest) {
   const code = req.nextUrl.searchParams.get('code')
 
   if (!code) {
-    return NextResponse.json({ error: '인증코드 없음' }, { status: 401 })
+    return NextResponse.json('Auth_code is empty', { status: 400 })
   }
   // get token from kakao authorization server
   const tokenRes = await fetch('https://kauth.kakao.com/oauth/token', {
