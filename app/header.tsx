@@ -3,7 +3,7 @@ import { cookies } from 'next/headers'
 import Link from 'next/link'
 import LoginBtn from './LoginBtn'
 import styles from './root.module.css'
-import { KakaoUserData } from '@types'
+import { KakaoUserData } from '@aftsnd/types'
 
 export default async function Header() {
   const cookieStore = await cookies()

@@ -17,8 +17,8 @@
     "types": ["node", "react", "react-dom"],
     "baseUrl": ".",
     "paths": {
-      "@prisma": ["app/prisma"],
-      "@types": ["app/types"]
+      "@aftsnd/prisma": ["app/prisma"],
+      "@aftsnd/types": ["app/types"]
     }
   },
   "include": ["next-env.d.ts", ".next/types/**/*.ts", "**/*.ts", "**/*.tsx"],

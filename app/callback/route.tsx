@@ -1,6 +1,8 @@
 import jwt from 'jsonwebtoken'
 import { NextRequest, NextResponse } from 'next/server'
-import { KakaoUserData } from '@types'
+
+import prisma from '@aftsnd/prisma'
+import { KakaoUserData } from '@aftsnd/types'
 
 
 export interface KakaoToken {
