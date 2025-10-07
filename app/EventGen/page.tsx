@@ -1,13 +1,13 @@
 import styles from './index.module.css'
 
-export default function Test2() {
+export default function EventGen() {
   const preToday = new Date()
   const today = new Date(preToday.setHours(9 + preToday.getHours()))
     .toISOString()
     .substring(0, 10)
 
   return (
-    <form action='test2/api' method='post' className={styles.addEvent}>
+    <form action='/EventGen/api' method='post' className={styles.addEvent}>
       <h2>나만의 모임을 개최해요</h2>
 
       {/* <input type='hidden' name='host' value={'1234567890'} /> */}
@@ -42,7 +42,7 @@ export default function Test2() {
         type='url'
         name='chat'
         id='chat'
-        placeholder='https://open.kakao.com/xxxxxxxx'
+        placeholder='https://open.kakao.com/o/xxxxxxxx'
       />
 
       <label htmlFor='confirm'>
