@@ -1,5 +1,7 @@
-import { NextRequest, NextResponse } from 'next/server'
 import jwt from 'jsonwebtoken'
+import { NextRequest, NextResponse } from 'next/server'
+import { KakaoUserData } from '@types'
+
 
 export interface KakaoToken {
   access_token: string
@@ -11,16 +13,7 @@ export interface KakaoToken {
   refresh_token_expires_in: number
 }
 
-// https://developers.kakao.com/docs/latest/ko/kakaologin/rest-api#kakaoaccount
-export interface KakaoUserData {
-  id: number
-  connected_at: string
-  kakao_account: {
-    name: string
-    birthyear: string
-    gender: 'male' | 'female'
-  }
-}
+
 
 export async function GET(req: NextRequest) {
   // get code from user
