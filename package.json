@@ -1,4 +1,16 @@
 {
+  "name": "aftsunday",
+  "version": "0.0.0",
+  "license": "GPL-3.0-only",
+  "homepage": "aftsunday.com",
+  "repository": "github:Teiming/AfterSundayFront",
+  "scripts": {
+    "postinstall": "prisma generate",
+    "dev": "next dev",
+    "build": "next build",
+    "start": "next start",
+    "lint": "next lint"
+  },
   "dependencies": {
     "@prisma/client": "^6.16.3",
     "@vercel/speed-insights": "^1.2.0",
@@ -17,11 +29,5 @@
     "prisma": "^6.16.2",
     "typescript": "5.9.3"
   },
-  "scripts": {
-    "postinstall": "prisma generate",
-    "dev": "next dev",
-    "build": "next build",
-    "start": "next start",
-    "lint": "next lint"
-  }
+  "private": "true"
 }
