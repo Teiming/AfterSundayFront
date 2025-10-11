@@ -1,25 +1,20 @@
-import jwt from 'jsonwebtoken'
-import { cookies } from 'next/headers'
+import { cookies, headers } from 'next/headers'
 import Link from 'next/link'
 import LoginBtn from './LoginBtn'
 import styles from './root.module.css'
-import { KakaoUserData } from '@aftsnd/types'
 
 export default async function Header() {
+  const header = await headers()
+  const at = header.get('Access-Token')
+  console.log(at)
+
   const cookieStore = await cookies()
-  const jwtToken = cookieStore.get('jwtToken')?.value
+  const refresh = cookieStore.get('Refresh-Token')?.value
+  console.log(refresh)
 
   let username
-  if (jwtToken) {
-    try {
-      const userdata = (await jwt.verify(
-        jwtToken,
-        process.env.JWT_SECRET!
-      )) as KakaoUserData
-      username = <h4>{userdata.kakao_account.name}님</h4>
-    } catch (error) {
-      console.log(error)
-    }
+  if (refresh) {
+    username = <h4>님</h4>
   }
 
   return (
