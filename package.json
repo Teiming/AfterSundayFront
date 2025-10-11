@@ -6,27 +6,29 @@
   "repository": "github:Teiming/AfterSundayFront",
   "scripts": {
     "postinstall": "prisma generate",
+    "db:pull": "prisma db pull",
+    "db:push": "prisma db push",
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
     "lint": "next lint"
   },
   "dependencies": {
-    "@prisma/client": "^6.16.3",
+    "@prisma/client": "^6.17.1",
     "@vercel/speed-insights": "^1.2.0",
     "bcrypt": "^6.0.0",
     "jsonwebtoken": "^9.0.2",
-    "next": "^15.4.6",
-    "react": "^19.1.1",
-    "react-dom": "^19.1.1"
+    "next": "^15.5.4",
+    "react": "^19.2.0",
+    "react-dom": "^19.2.0"
   },
   "devDependencies": {
     "@types/bcrypt": "^6.0.0",
     "@types/jsonwebtoken": "^9.0.10",
     "@types/node": "24.7.1",
     "@types/react": "19.2.2",
-    "@types/react-dom": "^19.1.9",
-    "prisma": "^6.16.2",
+    "@types/react-dom": "^19.2.1",
+    "prisma": "^6.17.1",
     "typescript": "5.9.3"
   },
   "private": "true"
