@@ -1,25 +1,36 @@
 {
   "compilerOptions": {
-    "module": "esnext",
-    "target": "es2023",
-    "lib": ["dom", "dom.iterable", "esnext"],
-    "allowJs": false,
-    "skipLibCheck": false,
+    // Type Checking
+    "noUnusedLocals": true,
+    "noUnusedParameters": true,
     "strict": true,
-    "noEmit": true,
-    "incremental": true,
-    "esModuleInterop": true,
-    "moduleResolution": "node",
-    "resolveJsonModule": true,
-    "isolatedModules": true,
-    "jsx": "preserve",
-    "plugins": [{ "name": "next" }],
-    "types": ["node", "react", "react-dom"],
+    // Modules
     "baseUrl": ".",
+    "module": "esnext",
+    "moduleResolution": "bundler",
     "paths": {
       "@aftsnd/prisma": ["app/prisma"],
       "@aftsnd/types": ["app/types"]
-    }
+    },
+    "resolveJsonModule": true,
+    "types": ["node", "react", "react-dom"],
+    // Emit
+    "noEmit": true,
+    // JavaScript Support
+    "allowJs": false,
+    // Editor Support
+    "plugins": [{ "name": "next" }],
+    // Interop Constraints
+    "esModuleInterop": true,
+    "isolatedModules": true,
+    // Language and Environment
+    "target": "es2023",
+    "jsx": "preserve",
+    "lib": ["dom", "dom.iterable", "esnext"],
+    // Projects
+    "incremental": true,
+    // Completeness
+    "skipLibCheck": false
   },
   "include": ["next-env.d.ts", ".next/types/**/*.ts", "**/*.ts", "**/*.tsx"],
   "exclude": ["node_modules"]
