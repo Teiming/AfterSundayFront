@@ -1,5 +1,6 @@
 import { NextRequest, NextResponse } from 'next/server'
-import prisma from '@prisma'
+
+import prisma from '@aftsnd/prisma'
 
 export async function POST(req: NextRequest) {
   // form data
@@ -13,7 +14,6 @@ export async function POST(req: NextRequest) {
   // prisma insert
   await prisma.events.create({
     data: {
-      host_id: 1, // Fix
       title,
       start_time: new Date(`${date}T${start}:00+09:00`).toISOString(),
       end_time: new Date(`${date}T${end}:00+09:00`).toISOString(),

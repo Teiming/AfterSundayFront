@@ -1,4 +1,4 @@
-import prisma from '@prisma'
+import prisma from '@aftsnd/prisma'
 
 export default async function Page() {
   const users = await prisma.users.findMany()
@@ -15,7 +15,7 @@ export default async function Page() {
           </tr>
         </thead>
         <tbody>
-          {users.map(({ username, email, created_at }, i) => {
+          {/* {users.map(({ username, email, created_at }, i) => {
             const month = Number(created_at?.getMonth()) + 1
             const day = Number(created_at?.getDate())
             return (
@@ -25,7 +25,7 @@ export default async function Page() {
                 <td style={{ padding: '0.5rem' }}>{`${month}월 ${day}일`}</td>
               </tr>
             )
-          })}
+          })} */}
         </tbody>
       </table>
       <section style={{ overflow: 'scroll' }}>
