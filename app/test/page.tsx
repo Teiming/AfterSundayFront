@@ -1,7 +1,7 @@
 import prisma from '@aftsnd/prisma'
 
 export default async function Page() {
-  const users = await prisma.users.findMany()
+  // const users = await prisma.users.findMany()
   const events = await prisma.events.findMany()
 
   return (
