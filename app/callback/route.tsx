@@ -108,9 +108,7 @@ export async function GET(req: NextRequest) {
     where: { id: uid },
   })
 
-  const res = NextResponse.redirect(
-    new URL('/', process.env.KAKAO_CALLBACK ?? req.url)
-  )
+  const res = NextResponse.redirect(new URL('/', req.url))
   res.headers.set('Access-Token', access)
   res.cookies.set('Refresh-Token', refresh, {
     path: '/',
