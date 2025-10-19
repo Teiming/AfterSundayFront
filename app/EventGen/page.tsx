@@ -1,5 +1,10 @@
 import styles from './index.module.css'
 
+async function UserId() {
+  // const id = await fetch('/api/getUID')
+  return <input type='hidden' name='id' value={123} />
+}
+
 export default function EventGen() {
   const preToday = new Date()
   const today = new Date(preToday.setHours(9 + preToday.getHours()))
@@ -10,7 +15,7 @@ export default function EventGen() {
     <form action='/EventGen/api' method='post' className={styles.addEvent}>
       <h2>나만의 모임을 개최해요</h2>
 
-      {/* <input type='hidden' name='host' value={'1234567890'} /> */}
+      <UserId />
 
       <label htmlFor='title'>모임 이름 (필수)</label>
       <input type='text' name='title' id='title' />
