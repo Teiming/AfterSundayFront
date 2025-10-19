@@ -48,7 +48,11 @@ export async function GET(req: NextRequest) {
       code,
     }),
   })
-  const kakaoToken = (await getKakaoToken.json()) as KakaoTokens
+  const { access_token, refresh_token } =
+    (await getKakaoToken.json()) as KakaoTokens
+  if (!access_token) {
+    throw new Error('/callback: no kakaoToken.access_token')
+  }
 
   // get userdata from kakao resouce server
   const rawUserData = await fetch('https://kapi.kakao.com/v2/user/me', {
