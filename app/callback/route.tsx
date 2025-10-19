@@ -10,14 +10,15 @@ import type { KakaoUserInfo } from '@aftsnd/types'
 
 export type Hash = string
 
+/** https://developers.kakao.com/docs/latest/ko/kakaologin/rest-api#request-token-response-body */
 export interface KakaoTokens {
-  access_token: string
   token_type: 'bearer'
-  refresh_token: string
+  access_token: string
   id_token: string
   expires_in: number
-  scope: string
+  refresh_token: string
   refresh_token_expires_in: number
+  scope: string
 }
 
 export interface AccessToken {
@@ -31,10 +32,10 @@ export async function GET(req: NextRequest) {
   const host = `https://${req.headers.get('host')}`
   // get code from user
   const code = req.nextUrl.searchParams.get('code')
-
   if (!code) {
     return NextResponse.json('Auth_code is empty', { status: 400 })
   }
+
   // get token from kakao authorization server
   const getKakaoToken = await fetch('https://kauth.kakao.com/oauth/token', {
     method: 'POST',
