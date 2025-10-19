@@ -28,6 +28,7 @@ export interface AccessToken {
 }
 
 export async function GET(req: NextRequest) {
+  const host = `https://${req.headers.get('host')}`
   // get code from user
   const code = req.nextUrl.searchParams.get('code')
 
@@ -41,10 +42,8 @@ export async function GET(req: NextRequest) {
       grant_type: 'authorization_code',
       client_id: process.env.KAKAO_CLIENT_ID!,
       client_secret: process.env.KAKAO_CLIENT_SECRET!,
-      redirect_uri: `${
-        process.env.KAKAO_CALLBACK ?? req.nextUrl.origin
-      }/callback`,
-      code: code!,
+      redirect_uri: `${host}/callback`,
+      code,
     }),
   })
   const kakaoToken = (await getKakaoToken.json()) as KakaoTokens
@@ -108,7 +107,7 @@ export async function GET(req: NextRequest) {
     where: { id: uid },
   })
 
-  const res = NextResponse.redirect(new URL('/', req.url))
+  const res = NextResponse.redirect(new URL('/', host))
   res.headers.set('Access-Token', access)
   res.cookies.set('Refresh-Token', refresh, {
     path: '/',
