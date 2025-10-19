@@ -27,10 +27,7 @@ export default async function Header() {
             </h2>
           </Link>
         </div>
-        <div className={styles.headerAction}>
-          {username}
-          {username ? null : <LoginBtn />}
-        </div>
+        <div className={styles.headerAction}>{username ?? <LoginBtn />}</div>
       </div>
     </header>
   )
