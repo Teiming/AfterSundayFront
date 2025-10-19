@@ -7,6 +7,7 @@ import { NextRequest, NextResponse } from 'next/server'
 
 import prisma from '@aftsnd/prisma'
 import type { KakaoUserInfo } from '@aftsnd/types'
+import { genCipherKakao } from '@aftsnd/utils'
 
 export type Hash = string
 

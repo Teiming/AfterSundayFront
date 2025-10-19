@@ -11,8 +11,10 @@
     "module": "esnext",
     "moduleResolution": "bundler",
     "paths": {
+      "@aftsnd/lib": ["lib"],
       "@aftsnd/prisma": ["app/prisma"],
-      "@aftsnd/types": ["app/types"]
+      "@aftsnd/types": ["types"],
+      "@aftsnd/utils": ["utils"]
     },
     "resolveJsonModule": true,
     "types": ["node", "react", "react-dom"],
