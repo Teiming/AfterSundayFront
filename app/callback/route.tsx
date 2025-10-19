@@ -76,6 +76,7 @@ export async function GET(req: NextRequest) {
   // get uuid
   // 1. search kakaoid
   const checkUserID = async (kakao_id: Hash) => {
+    console.log({ kakao_id })
     return await prisma.users.findUnique({ where: { kakao_id } })
   }
 
