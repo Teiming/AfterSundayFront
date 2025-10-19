@@ -6,11 +6,11 @@ import styles from './root.module.css'
 export default async function Header() {
   const header = await headers()
   const at = header.get('Access-Token')
-  console.log(at)
+  console.log({ at })
 
   const cookieStore = await cookies()
   const refresh = cookieStore.get('Refresh-Token')?.value
-  console.log(refresh)
+  console.log({ refresh })
 
   let username
   if (refresh) {
