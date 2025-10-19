@@ -132,16 +132,18 @@ export async function GET(req: NextRequest) {
     cipher: refresh_cipher,
     tag: refresh_tag,
   } = genCipherKakao(refresh_token)
-  await prisma.kakao_token.create({
-    data: {
-      uid,
-      access_iv,
-      access_cipher,
-      access_tag,
-      refresh_iv,
-      refresh_cipher,
-      refresh_tag,
-    },
+  const cipherInfo = {
+    access_iv,
+    access_cipher,
+    access_tag,
+    refresh_iv,
+    refresh_cipher,
+    refresh_tag,
+  }
+  await prisma.kakao_token.upsert({
+    create: { uid, ...cipherInfo },
+    update: cipherInfo,
+    where: { uid },
   })
 
   const res = NextResponse.redirect(new URL('/', host))
