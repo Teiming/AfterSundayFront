@@ -6,7 +6,7 @@ import jwt from 'jsonwebtoken'
 import { NextRequest, NextResponse } from 'next/server'
 
 import prisma from '@aftsnd/prisma'
-import type { KakaoUserData } from '@aftsnd/types'
+import type { KakaoUserInfo } from '@aftsnd/types'
 
 export type Hash = string
 
@@ -52,11 +52,14 @@ export async function GET(req: NextRequest) {
   const rawUserData = await fetch('https://kapi.kakao.com/v2/user/me', {
     headers: { Authorization: `Bearer ${kakaoToken.access_token}` },
   })
-  const kakaoUserData = (await rawUserData.json()) as KakaoUserData
+  const kakaoUserInfo = (await rawUserData.json()) as KakaoUserInfo
+  if (!kakaoUserInfo.id) {
+    throw new Error('/callback: no kakaoUserInfo.id')
+  }
 
   // hash kakao_id
   const hashedKakaoID = createHmac('sha256', process.env.KAKAOID_SECRET!)
-    .update(String(kakaoUserData.id), 'utf-8')
+    .update(String(kakaoUserInfo.id), 'utf-8')
     .digest('hex')
 
   // get uuid
