@@ -53,7 +53,7 @@ export async function GET(req: NextRequest) {
   // get userdata from kakao resouce server
   const rawUserData = await fetch('https://kapi.kakao.com/v2/user/me', {
     headers: { Authorization: `Bearer ${kakaoToken.access_token}` },
-  })
+    })
   const kakaoUserInfo = (await rawUserData.json()) as KakaoUserInfo
   if (!kakaoUserInfo.id) {
     throw new Error('/callback: no kakaoUserInfo.id')
@@ -110,6 +110,29 @@ export async function GET(req: NextRequest) {
     create: { id: uid, ...hashedRefresh },
     update: { ...hashedRefresh },
     where: { id: uid },
+  })
+
+  // 4. encrypt and save kakao tokens
+  const {
+    iv: access_iv,
+    cipher: access_cipher,
+    tag: access_tag,
+  } = genCipherKakao(access_token)
+  const {
+    iv: refresh_iv,
+    cipher: refresh_cipher,
+    tag: refresh_tag,
+  } = genCipherKakao(refresh_token)
+  await prisma.kakao_token.create({
+    data: {
+      uid,
+      access_iv,
+      access_cipher,
+      access_tag,
+      refresh_iv,
+      refresh_cipher,
+      refresh_tag,
+    },
   })
 
   const res = NextResponse.redirect(new URL('/', host))
