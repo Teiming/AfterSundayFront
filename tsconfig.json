@@ -11,8 +11,7 @@
     "module": "esnext",
     "moduleResolution": "bundler",
     "paths": {
-      "@aftsnd/lib": ["lib"],
-      "@aftsnd/prisma": ["app/prisma"],
+      "@aftsnd/prisma": ["lib/prisma"],
       "@aftsnd/types": ["types"],
       "@aftsnd/utils": ["utils"]
     },
