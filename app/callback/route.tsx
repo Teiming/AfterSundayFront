@@ -54,14 +54,19 @@ export async function GET(req: NextRequest) {
     throw new Error('/callback: no kakaoToken.access_token')
   }
 
-  // get userdata from kakao resouce server
-  const rawUserData = await fetch('https://kapi.kakao.com/v2/user/me', {
-    headers: { Authorization: `Bearer ${kakaoToken.access_token}` },
+  /** https://developers.kakao.com/docs/latest/ko/kakaologin/rest-api#req-user-info */
+  const requestUserInfo = async (t: string) => {
+    const res = await fetch('https://kapi.kakao.com/v2/user/me', {
+      headers: { Authorization: `Bearer ${t}` },
     })
-  const kakaoUserInfo = (await rawUserData.json()) as KakaoUserInfo
-  if (!kakaoUserInfo.id) {
-    throw new Error('/callback: no kakaoUserInfo.id')
+    const res_ = await res.json()
+    if ('id' in res_) {
+      return res_ as KakaoUserInfo
+    } else {
+      throw new Error(JSON.stringify(res))
+    }
   }
+  const kakaoUserInfo = await requestUserInfo(access_token)
 
   // hash kakao_id
   const hashedKakaoID = createHmac('sha256', process.env.KAKAOID_SECRET!)
