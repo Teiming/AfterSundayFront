@@ -54,7 +54,7 @@ export async function GET(req: NextRequest) {
   })
   const kakaoUserData = (await rawUserData.json()) as KakaoUserData
 
-  // encrypt kakao_id
+  // hash kakao_id
   const hashedKakaoID = createHmac('sha256', process.env.KAKAOID_SECRET!)
     .update(String(kakaoUserData.id), 'utf-8')
     .digest('hex')
