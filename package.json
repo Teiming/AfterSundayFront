@@ -5,9 +5,10 @@
   "homepage": "aftsunday.com",
   "repository": "github:Teiming/AfterSundayFront",
   "scripts": {
-    "postinstall": "prisma db pull && prisma generate",
+    "postinstall": "prisma db pull",
     "db:push": "prisma db push",
     "dev": "next dev --experimental-https -p 443",
+    "prebuild": "prisma generate",
     "build": "next build",
     "start": "next start",
     "lint": "next lint"
